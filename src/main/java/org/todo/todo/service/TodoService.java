@@ -24,4 +24,15 @@ public class TodoService {
     public void delete(Long id) {
         todos.removeIf(t -> t.getId().equals(id));
     }
+
+    public Todo updateStatus(long id, boolean status) {
+        return todos.stream()
+                .filter(t -> t.getId().equals(id))
+                .findFirst()
+                .map(t -> {
+                    t.setCompleted(status);
+                    return t;
+                })
+                .orElseThrow(() -> new RuntimeException("Todo not found with id: " + id));
+    }
 }

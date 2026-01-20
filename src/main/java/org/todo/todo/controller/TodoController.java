@@ -6,11 +6,13 @@ import java.util.ArrayList;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.todo.todo.dto.TodoRequest;
+import org.todo.todo.dto.TodoStatusRequest;
 import org.todo.todo.model.Todo;
 import org.todo.todo.service.TodoService;
 
@@ -36,5 +38,10 @@ public class TodoController {
     public ResponseEntity<Void> deleteTodo(@PathVariable Long id) {
         todoService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping("/update/status")
+    public Todo updateStatus(@RequestBody TodoStatusRequest request) {
+        return todoService.updateStatus(request.getId(), request.isCompleted());
     }
 }
