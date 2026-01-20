@@ -16,13 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @SpringBootApplication
-public class ToDo {
-    @RequestMapping("/")
-    String home() {
-        return "Hello Hello";
-    }
-
+public class TodoApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ToDo.class, args);
+        SpringApplication.run(TodoApplication.class, args);
     }
 }
