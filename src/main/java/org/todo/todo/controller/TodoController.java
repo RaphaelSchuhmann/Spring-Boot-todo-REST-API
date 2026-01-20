@@ -1,7 +1,6 @@
 package org.todo.todo.controller;
 
 import java.util.List;
-import java.util.ArrayList;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
